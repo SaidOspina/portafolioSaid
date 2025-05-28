@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Said Prado Ospina- Portafolio Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- Música de fondo -->
+    <audio id="backgroundMusic" loop>
+        <source src="music/background.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Partículas de fondo -->
+    <div class="bg-particles">
+        <!-- Las partículas se generan dinámicamente con JavaScript -->
+    </div>
+
+    <!-- Header y Navegación -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-code"></i> Said Prado Ospina
+            </div>
+            <div class="nav-links">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
+                <a href="#habilidades" class="nav-link">Habilidades</a>
+                <a href="#experiencia" class="nav-link">Experiencia</a>
+                <a href="#educacion" class="nav-link">Educación</a>
+                <a href="#proyectos" class="nav-link">Proyectos</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="typing-text">Hola, soy Said Prado Ospina</span>
+                </h1>
+                <p class="hero-subtitle">Desarrollador Full Stack & Diseñador UI/UX</p>
+                <p class="hero-description">
+                    Especializado en crear experiencias digitales innovadoras y funcionales. 
+                    Combino diseño creativo con desarrollo técnico para entregar soluciones completas.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+                    <a href="#" class="btn btn-secondary" id="downloadCV">
+                        <i class="fas fa-download"></i> Descargar CV
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/SaidOspina" target="_blank" class="social-link" id="githubLink">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/deisler-said-prado-ospina-50b865152?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <div hidden>
+                        <a href="https://www.behance.net/saidospina" class="social-link">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                    </div>
+                    <a href="https://github.com/SaidOs12" target="_blank" class="social-link" id="githubLink">
+                        <i class="fa-brands fa-github" style="color: #B197FC;"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-container">
+                    <img src="img/perfil.png" alt="Deisler Said" class="profile-img">
+                    <div class="profile-ring"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Soy un desarrollador apasionado con varios años de experiencia en el desarrollo de proyectos de aplicaciones con fines académicos y proyectos por encargo freelance. Mi enfoque se centra en crear soluciones innovadoras que combinen funcionalidad excepcional con diseño atractivo.
+                    </p>
+                    <p>
+                        Mi experiencia abarca desde el desarrollo frontend con tecnologías modernas hasta 
+                        backend robusto, pasando por diseño UI/UX y automatización de procesos. 
+                        Siempre busco mantenerme actualizado con las últimas tendencias tecnológicas.
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>10+</h3>
+                            <p>Proyectos Completados</p>
+                        </div>
+                        <div class="stat">
+                            <h3>2</h3>
+                            <p>Años de Experiencia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="img/workspace.jpg" alt="Workspace">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="habilidades" class="skills">
+        <div class="container">
+            <h2 class="section-title">Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <!-- Desarrollo -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Desarrollo</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span>JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Java</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>C++</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>C#</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>HTML & CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bases de Datos -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Bases de Datos</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span>MongoDB</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="94%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>MySQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="68%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>PostgreSQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="72%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Herramientas -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Herramientas</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span>Git & GitHub</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Selenium</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="65%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Figma</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Office Suite</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="78%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metodologías -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-cogs"></i> Metodologías</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span>Scrum</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="78%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Minería de Datos</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Análisis de Procesos</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Documentación y redacción</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Análisis y diseño</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Experiencia Laboral -->
+    <section id="experiencia" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experiencia Laboral</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - Presente</div>
+                        <h3>Desarrollador Full Stack Senior</h3>
+                        <h4>Tech Solutions Corp</h4>
+                        <p>
+                            Lidero el desarrollo de aplicaciones web complejas utilizando tecnologías modernas. 
+                            Implementé sistemas de automatización que redujeron el tiempo de procesamiento en un 40%. 
+                            Responsable de mentoría técnica y revisión de código del equipo junior.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">Python</span>
+                            <span class="tech">React</span>
+                            <span class="tech">Django</span>
+                            <span class="tech">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2023</div>
+                        <h3>Desarrollador Frontend & UI/UX Designer</h3>
+                        <h4>Digital Innovation Ltd</h4>
+                        <p>
+                            Diseñé y desarrollé interfaces de usuario intuitivas para aplicaciones web y móviles. 
+                            Creé sistemas de diseño escalables y prototipos interactivos. Colaboré estrechamente 
+                            con equipos de producto para mejorar la experiencia del usuario.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech">Figma</span>
+                            <span class="tech">HTML/CSS</span>
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">Vue.js</span>
+                            <span class="tech">Adobe Creative Suite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2021</div>
+                        <h3>Analista de Procesos & Automatización</h3>
+                        <h4>Business Process Solutions</h4>
+                        <p>
+                            Analicé y optimicé procesos empresariales mediante automatización con herramientas Office 
+                            y scripts personalizados. Desarrollé documentación técnica y capacité usuarios finales. 
+                            Implementé soluciones que mejoraron la eficiencia operativa en un 35%.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech">Python</span>
+                            <span class="tech">VBA</span>
+                            <span class="tech">SQL</span>
+                            <span class="tech">Power BI</span>
+                            <span class="tech">Office 365</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019 - 2020</div>
+                        <h3>QA Automation Engineer</h3>
+                        <h4>Software Testing Co.</h4>
+                        <p>
+                            Desarrollé y mantuve suites de pruebas automatizadas utilizando Selenium y Java. 
+                            Implementé pipelines de CI/CD y estrategias de testing que redujeron bugs en producción 
+                            en un 60%. Colaboré con equipos de desarrollo para mejorar la calidad del software.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech">Java</span>
+                            <span class="tech">Selenium</span>
+                            <span class="tech">TestNG</span>
+                            <span class="tech">Jenkins</span>
+                            <span class="tech">Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018 - 2019</div>
+                        <h3>Desarrollador Junior</h3>
+                        <h4>StartUp Tech Solutions</h4>
+                        <p>
+                            Inicié mi carrera profesional desarrollando aplicaciones web y apoyando en tareas 
+                            de mantenimiento de sistemas. Participé activamente en metodologías ágiles (Scrum) 
+                            y contribuí al desarrollo de módulos de gestión empresarial.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech">PHP</span>
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">MySQL</span>
+                            <span class="tech">HTML/CSS</span>
+                            <span class="tech">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Educación -->
+    <section id="educacion" class="education">
+        <div class="container">
+            <h2 class="section-title">Educación y Formación</h2>
+            
+            <!-- Educación Formal -->
+            <div class="education-category">
+                <h3><i class="fas fa-graduation-cap"></i> Educación Formal</h3>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="education-content">
+                            <div class="education-date">2015 - 2019</div>
+                            <h4>Ingeniería en Sistemas</h4>
+                            <h5>Universidad Nacional de Colombia</h5>
+                            <p>
+                                Formación integral en desarrollo de software, análisis de sistemas, 
+                                bases de datos y metodologías de ingeniería de software. 
+                                Proyecto de grado enfocado en inteligencia artificial aplicada.
+                            </p>
+                            <div class="education-achievements">
+                                <span class="achievement">Magna Cum Laude</span>
+                                <span class="achievement">Mejor Proyecto de Grado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="education-content">
+                            <div class="education-date">2013 - 2015</div>
+                            <h4>Técnico en Programación</h4>
+                            <h5>SENA - Servicio Nacional de Aprendizaje</h5>
+                            <p>
+                                Formación técnica especializada en programación y desarrollo de software. 
+                                Enfoque práctico en múltiples lenguajes de programación y metodologías 
+                                de desarrollo.
+                            </p>
+                            <div class="education-achievements">
+                                <span class="achievement">Excelencia Académica</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificaciones -->
+            <div class="education-category">
+                <h3><i class="fas fa-certificate"></i> Certificaciones Profesionales</h3>
+                <div class="certifications-grid">
+                    <div class="certification-card">
+                        <div class="cert-provider">Oracle</div>
+                        <h4>Oracle Certified Professional Java Developer</h4>
+                        <div class="cert-date">2023</div>
+                        <div class="cert-badge">
+                            <i class="fab fa-java"></i>
+                        </div>
+                    </div>
+
+                    <div class="certification-card">
+                        <div class="cert-provider">Microsoft</div>
+                        <h4>Azure Fundamentals (AZ-900)</h4>
+                        <div class="cert-date">2023</div>
+                        <div class="cert-badge">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                    </div>
+
+                    <div class="certification-card">
+                        <div class="cert-provider">Google</div>
+                        <h4>Google Analytics Individual Qualification</h4>
+                        <div class="cert-date">2022</div>
+                        <div class="cert-badge">
+                            <i class="fab fa-google"></i>
+                        </div>
+                    </div>
+
+                    <div class="certification-card">
+                        <div class="cert-provider">Scrum.org</div>
+                        <h4>Professional Scrum Master I (PSM I)</h4>
+                        <div class="cert-date">2022</div>
+                        <div class="cert-badge">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                    </div>
+
+                    <div class="certification-card">
+                        <div class="cert-provider">AWS</div>
+                        <h4>AWS Cloud Practitioner</h4>
+                        <div class="cert-date">2021</div>
+                        <div class="cert-badge">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                    </div>
+
+                    <div class="certification-card">
+                        <div class="cert-provider">Adobe</div>
+                        <h4>Adobe Certified Expert - Photoshop</h4>
+                        <div class="cert-date">2021</div>
+                        <div class="cert-badge">
+                            <i class="fab fa-adobe"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cursos y Formación Continua -->
+            <div class="education-category">
+                <h3><i class="fas fa-book"></i> Formación Continua</h3>
+                <div class="courses-timeline">
+                    <div class="course-item">
+                        <div class="course-date">2024</div>
+                        <div class="course-content">
+                            <h4>Machine Learning Specialization</h4>
+                            <p class="course-provider">Stanford University - Coursera</p>
+                            <p>Especialización completa en aprendizaje automático, incluyendo algoritmos supervisados y no supervisados, redes neuronales profundas.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-item">
+                        <div class="course-date">2023</div>
+                        <div class="course-content">
+                            <h4>Full Stack Web Development Bootcamp</h4>
+                            <p class="course-provider">The Complete Web Developer Bootcamp</p>
+                            <p>Bootcamp intensivo cubriendo tecnologías modernas: React, Node.js, Express, MongoDB, y mejores prácticas de desarrollo.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-item">
+                        <div class="course-date">2023</div>
+                        <div class="course-content">
+                            <h4>Advanced UI/UX Design Course</h4>
+                            <p class="course-provider">Google UX Design Professional Certificate</p>
+                            <p>Diseño centrado en el usuario, prototipado, investigación de usuarios, y herramientas de diseño avanzadas.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-item">
+                        <div class="course-date">2022</div>
+                        <div class="course-content">
+                            <h4>DevOps Engineering on AWS</h4>
+                            <p class="course-provider">Amazon Web Services</p>
+                            <p>Implementación de pipelines CI/CD, infraestructura como código, monitoreo y logging en entornos cloud.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-item">
+                        <div class="course-date">2022</div>
+                        <div class="course-content">
+                            <h4>Data Science and Analytics</h4>
+                            <p class="course-provider">IBM Data Science Professional Certificate</p>
+                            <p>Python para ciencia de datos, análisis estadístico, visualización de datos y machine learning aplicado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Idiomas -->
+            <div class="education-category">
+                <h3><i class="fas fa-language"></i> Idiomas</h3>
+                <div class="languages-grid">
+                    <div class="language-card">
+                        <div class="language-name">Español</div>
+                        <div class="language-level">Nativo</div>
+                        <div class="language-bar">
+                            <div class="language-progress" style="width: 100%"></div>
+                        </div>
+                    </div>
+
+                    <div class="language-card">
+                        <div class="language-name">Inglés</div>
+                        <div class="language-level">Avanzado (C1)</div>
+                        <div class="language-bar">
+                            <div class="language-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="language-card">
+                        <div class="language-name">Francés</div>
+                        <div class="language-level">Intermedio (B2)</div>
+                        <div class="language-bar">
+                            <div class="language-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+
+                    <div class="language-card">
+                        <div class="language-name">Portugués</div>
+                        <div class="language-level">Básico (A2)</div>
+                        <div class="language-bar">
+                            <div class="language-progress" style="width: 40%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Sección Proyectos -->
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2 class="section-title">Mis Proyectos</h2>
+            
+            <!-- Diseño Web -->
+            <div class="project-category">
+                <h3><i class="fas fa-palette"></i> Diseño Web (Figma)</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/figma-project-1.jpg" alt="Proyecto Figma 1">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>E-commerce Mobile App</h4>
+                            <p>Diseño completo de aplicación móvil para comercio electrónico</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/figma-project-2.jpg" alt="Proyecto Figma 2">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Dashboard Analytics</h4>
+                            <p>Panel de control para análisis de datos empresariales</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="images/figma-project-3.jpg" alt="Proyecto Figma 3">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h4>Corporate Website</h4>
+                            <p>Sitio web corporativo con diseño moderno y funcional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desarrollo -->
+            <div class="project-category">
+                <h3><i class="fas fa-laptop-code"></i> Desarrollo (GitHub)</h3>
+                <div class="github-projects">
+                    <div class="github-card">
+                        <div class="github-info">
+                            <h4><i class="fab fa-github"></i> Sistema de Gestión Inventario</h4>
+                            <p>Aplicación web completa para gestión de inventarios con Python/Django</p>
+                            <div class="tech-stack">
+                                <span class="tech">Python</span>
+                                <span class="tech">Django</span>
+                                <span class="tech">MySQL</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/tu-usuario/proyecto-1" class="github-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="github-card">
+                        <div class="github-info">
+                            <h4><i class="fab fa-github"></i> Automatización Web con Selenium</h4>
+                            <p>Suite de herramientas para automatización de pruebas web</p>
+                            <div class="tech-stack">
+                                <span class="tech">Java</span>
+                                <span class="tech">Selenium</span>
+                                <span class="tech">JUnit</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/tu-usuario/proyecto-2" class="github-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <div class="github-card">
+                        <div class="github-info">
+                            <h4><i class="fab fa-github"></i> Análisis de Datos COVID-19</h4>
+                            <p>Dashboard interactivo para análisis de datos de COVID-19</p>
+                            <div class="tech-stack">
+                                <span class="tech">Python</span>
+                                <span class="tech">Pandas</span>
+                                <span class="tech">Plotly</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/tu-usuario/proyecto-3" class="github-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edición de Video -->
+            <div class="project-category">
+                <h3><i class="fas fa-video"></i> Edición de Video</h3>
+                <div class="video-section">
+                    <div class="video-container">
+                        <video controls poster="images/video-thumbnail.jpg">
+                            <source src="videos/demo-reel.mp4" type="video/mp4">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h4>Demo Reel - Proyectos de Edición</h4>
+                        <p>
+                            Muestra de trabajos realizados en edición de video, incluyendo 
+                            contenido corporativo, promocional y educativo. Especializado en 
+                            storytelling visual y post-producción.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>¡Hablemos!</h3>
+                    <p>
+                        ¿Tienes un proyecto en mente? Me encantaría escuchar sobre él y 
+                        discutir cómo puedo ayudarte a hacerlo realidad.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>deislersaid1418@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Cúcuta, Norte de Santander, Colombia</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" required>
+                        <label for="nombre">Nombre Completo</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="rol" name="rol" required>
+                        <label for="rol">Rol/Posición</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="empresa" name="empresa">
+                        <label for="empresa">Empresa (Opcional)</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Correo Electrónico</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="telefono" name="telefono">
+                        <label for="telefono">Teléfono (Opcional)</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="mensaje" name="mensaje" required></textarea>
+                        <label for="mensaje">Mensaje</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Deisler Said</h3>
+                    <p>Desarrollador Full Stack & Diseñador UI/UX</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#sobre-mi">Sobre Mí</a>
+                    <a href="#habilidades">Habilidades</a>
+                    <a href="#experiencia">Experiencia</a>
+                    <a href="#educacion">Educación</a>
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/tu-usuario" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Deisler Said. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Control de música -->
+    <div class="music-control">
+        <button id="musicToggle" class="music-btn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
