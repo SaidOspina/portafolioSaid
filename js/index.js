@@ -3,7 +3,13 @@ const CONFIG = {
     particleCount: 50,
     musicVolume: 0.15,
     animationDelay: 100,
-    scrollOffset: 100
+    scrollOffset: 100,
+    // Configuración de EmailJS
+    emailJS: {
+        serviceID: "service_8dq6atk",
+        templateID: "template_7m02u1c",
+        userID: "zIeqBcQvqDWK7b_66"
+    }
 };
 
 // Variables globales
@@ -13,6 +19,7 @@ let animatedElements = new Set();
 
 // Inicialización cuando el DOM está listo
 document.addEventListener('DOMContentLoaded', function() {
+    initializeEmailJS();
     initializeParticles();
     initializeNavigation();
     initializeMusic();
@@ -23,6 +30,17 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeGitHubLinks();
     initializeCVDownload();
 });
+
+// Inicializar EmailJS
+function initializeEmailJS() {
+    try {
+        emailjs.init(CONFIG.emailJS.userID);
+        console.log('✅ EmailJS inicializado correctamente');
+    } catch (error) {
+        console.error('❌ Error inicializando EmailJS:', error);
+        showNotification('Error al inicializar el servicio de correo', 'error');
+    }
+}
 
 // Sistema de partículas de fondo
 function initializeParticles() {
@@ -269,7 +287,7 @@ function initializeSkillBars() {
     skillBars.forEach(bar => observer.observe(bar));
 }
 
-// Sistema de formulario de contacto
+// Sistema de formulario de contacto con EmailJS
 function initializeContactForm() {
     const form = document.getElementById('contactForm');
     
@@ -297,13 +315,9 @@ function handleFormSubmission(e) {
         return;
     }
 
-    // Simular envío de email
+    // Mostrar estado de carga y enviar email
     showLoadingState(true);
-    
-    setTimeout(() => {
-        sendEmail(data);
-        showLoadingState(false);
-    }, 2000);
+    sendEmailWithEmailJS(data);
 }
 
 function validateForm(data) {
@@ -356,45 +370,81 @@ function clearFieldError(field) {
     field.style.borderColor = 'rgba(0, 102, 255, 0.3)';
 }
 
-function sendEmail(data) {
-    // Crear el contenido del email
-    const emailContent = `
-        Nuevo mensaje de contacto desde el portafolio:
+// Función principal para enviar email con EmailJS
+function sendEmailWithEmailJS(data) {
+    // Preparar los parámetros del template
+    const templateParams = {
+        from_name: data.nombre,
+        from_email: data.email,
+        from_role: data.rol,
+        from_company: data.empresa || 'No especificada',
+        from_phone: data.telefono || 'No especificado',
+        message: data.mensaje,
+        to_email: 'deislersaid1418@gmail.com',
+        reply_to: data.email
+    };
+
+    // Enviar email usando EmailJS
+    emailjs.send(
+        CONFIG.emailJS.serviceID,
+        CONFIG.emailJS.templateID,
+        templateParams
+    )
+    .then(function(response) {
+        console.log('✅ Email enviado exitosamente:', response.status, response.text);
+        showLoadingState(false);
+        showNotification('¡Mensaje enviado exitosamente! Te contactaré pronto.', 'success');
         
-        Nombre: ${data.nombre}
-        Rol: ${data.rol}
-        Empresa: ${data.empresa || 'No especificada'}
-        Email: ${data.email}
-        Teléfono: ${data.telefono || 'No especificado'}
+        // Limpiar formulario después del envío exitoso
+        document.getElementById('contactForm').reset();
         
-        Mensaje:
-        ${data.mensaje}
-    `;
-    
-    // Crear el enlace mailto
-    const mailtoLink = `mailto:deislersaid1418@gmail.com?subject=Nuevo mensaje de contacto - ${data.nombre}&body=${encodeURIComponent(emailContent)}`;
-    
-    // Abrir cliente de email
-    window.location.href = mailtoLink;
-    
-    // Mostrar confirmación
-    showNotification('Email preparado. Se abrirá tu cliente de correo.', 'success');
-    
-    // Limpiar formulario
-    document.getElementById('contactForm').reset();
+        // Trackear evento de envío exitoso
+        trackEvent('form_submit_success', 'Contact', 'EmailJS');
+        
+    }, function(error) {
+        console.error('❌ Error enviando email:', error);
+        showLoadingState(false);
+        
+        // Mostrar error específico basado en el código
+        let errorMessage = 'Error al enviar el mensaje. ';
+        
+        if (error.status === 400) {
+            errorMessage += 'Datos del formulario inválidos.';
+        } else if (error.status === 401) {
+            errorMessage += 'Error de autenticación del servicio.';
+        } else if (error.status === 402) {
+            errorMessage += 'Límite de emails alcanzado.';
+        } else if (error.status === 404) {
+            errorMessage += 'Servicio no encontrado.';
+        } else if (error.status >= 500) {
+            errorMessage += 'Error del servidor. Intenta más tarde.';
+        } else {
+            errorMessage += 'Por favor, intenta nuevamente.';
+        }
+        
+        showNotification(errorMessage, 'error');
+        
+        // Trackear evento de error
+        trackEvent('form_submit_error', 'Contact', `Error_${error.status}`);
+    });
 }
 
 function showLoadingState(isLoading) {
     const submitButton = document.querySelector('.contact-form button[type="submit"]');
-    const buttonText = submitButton.querySelector('i').nextSibling;
+    const buttonIcon = submitButton.querySelector('i');
+    const buttonText = buttonIcon.nextSibling;
     
     if (isLoading) {
         submitButton.disabled = true;
         submitButton.style.opacity = '0.7';
+        submitButton.style.cursor = 'not-allowed';
+        buttonIcon.className = 'fas fa-spinner fa-spin';
         buttonText.textContent = ' Enviando...';
     } else {
         submitButton.disabled = false;
         submitButton.style.opacity = '1';
+        submitButton.style.cursor = 'pointer';
+        buttonIcon.className = 'fas fa-paper-plane';
         buttonText.textContent = ' Enviar Mensaje';
     }
 }
@@ -422,17 +472,23 @@ function showNotification(message, type = 'info') {
         zIndex: '9999',
         transform: 'translateX(100%)',
         transition: 'transform 0.3s ease',
-        maxWidth: '300px',
-        wordWrap: 'break-word'
+        maxWidth: '350px',
+        wordWrap: 'break-word',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+        fontSize: '0.9rem',
+        lineHeight: '1.4'
     });
     
     // Colores según el tipo
     if (type === 'success') {
         notification.style.background = 'linear-gradient(45deg, #00ff88, #00cc6a)';
+        notification.innerHTML = `<i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>${message}`;
     } else if (type === 'error') {
         notification.style.background = 'linear-gradient(45deg, #ff4444, #cc3333)';
+        notification.innerHTML = `<i class="fas fa-exclamation-circle" style="margin-right: 0.5rem;"></i>${message}`;
     } else {
         notification.style.background = 'linear-gradient(45deg, #0066ff, #004499)';
+        notification.innerHTML = `<i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>${message}`;
     }
     
     document.body.appendChild(notification);
@@ -442,7 +498,8 @@ function showNotification(message, type = 'info') {
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Remover después de 5 segundos
+    // Remover después de 5 segundos (8 segundos para errores)
+    const duration = type === 'error' ? 8000 : 5000;
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => {
@@ -450,7 +507,7 @@ function showNotification(message, type = 'info') {
                 notification.remove();
             }
         }, 300);
-    }, 5000);
+    }, duration);
 }
 
 // Sistema de scroll suave
@@ -664,6 +721,9 @@ function trackEvent(action, category = 'Portfolio', label = '') {
             event_label: label
         });
     }
+    
+    // Log para desarrollo
+    console.log(`📊 Event tracked: ${category} - ${action} - ${label}`);
 }
 
 // Trackear interacciones importantes
@@ -695,15 +755,102 @@ function initializeLazyLoading() {
     images.forEach(img => imageObserver.observe(img));
 }
 
+// Función para testear la configuración de EmailJS
+function testEmailJSConnection() {
+    const testParams = {
+        from_name: 'Test User',
+        from_email: 'test@example.com',
+        from_role: 'Tester',
+        from_company: 'Test Company',
+        from_phone: '123-456-7890',
+        message: 'Este es un mensaje de prueba para verificar la configuración de EmailJS.',
+        to_email: 'deislersaid1418@gmail.com',
+        reply_to: 'test@example.com'
+    };
+
+    console.log('🧪 Iniciando prueba de EmailJS...');
+    
+    emailjs.send(
+        CONFIG.emailJS.serviceID,
+        CONFIG.emailJS.templateID,
+        testParams
+    )
+    .then(function(response) {
+        console.log('✅ Test EmailJS exitoso:', response.status, response.text);
+        showNotification('Configuración de EmailJS verificada correctamente', 'success');
+    })
+    .catch(function(error) {
+        console.error('❌ Test EmailJS falló:', error);
+        showNotification('Error en la configuración de EmailJS', 'error');
+    });
+}
+
+// Función para verificar el estado de EmailJS
+function checkEmailJSStatus() {
+    if (typeof emailjs === 'undefined') {
+        console.error('❌ EmailJS no está cargado');
+        showNotification('Error: Servicio de email no disponible', 'error');
+        return false;
+    }
+    
+    if (!CONFIG.emailJS.serviceID || !CONFIG.emailJS.templateID || !CONFIG.emailJS.userID) {
+        console.error('❌ Configuración de EmailJS incompleta');
+        showNotification('Error: Configuración de email incompleta', 'error');
+        return false;
+    }
+    
+    console.log('✅ EmailJS configurado correctamente');
+    return true;
+}
+
+// Verificar estado al cargar
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        checkEmailJSStatus();
+    }, 1000);
+});
+
+// Funciones de desarrollo (solo para testing)
+function enableDevMode() {
+    // Agregar botón de test en modo desarrollo
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        const testButton = document.createElement('button');
+        testButton.textContent = '🧪 Test EmailJS';
+        testButton.style.cssText = `
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            padding: 10px 15px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            z-index: 9999;
+            font-size: 12px;
+            font-weight: bold;
+        `;
+        testButton.addEventListener('click', testEmailJSConnection);
+        document.body.appendChild(testButton);
+        
+        console.log('🔧 Modo desarrollo activado');
+    }
+}
+
+// Activar modo desarrollo si es necesario
+enableDevMode();
 
 // Exportar funciones para uso externo si es necesario
 window.PortfolioApp = {
     showNotification,
     trackEvent,
     toggleMenu,
+    testEmailJSConnection,
+    checkEmailJSStatus,
     CONFIG
 };
 
 console.log('🚀 Portafolio de Deisler Said cargado correctamente');
 console.log('🎵 Música de fondo:', isMusicPlaying ? 'Activada' : 'Desactivada');
 console.log('📱 Dispositivo:', window.innerWidth <= 768 ? 'Móvil' : 'Desktop');
+console.log('📧 EmailJS:', typeof emailjs !== 'undefined' ? 'Cargado' : 'No disponible');

@@ -872,6 +872,7 @@ section {
 }
 
 .course-date {
+    margin-left: 1.5rem; 
     color: var(--accent-cyan);
     font-weight: 600;
     font-size: 0.9rem;
