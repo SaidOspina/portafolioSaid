@@ -695,18 +695,6 @@ function initializeLazyLoading() {
     images.forEach(img => imageObserver.observe(img));
 }
 
-// Service Worker para cache (opcional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registrado:', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed:', registrationError);
-            });
-    });
-}
 
 // Exportar funciones para uso externo si es necesario
 window.PortfolioApp = {
